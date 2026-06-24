@@ -4,167 +4,161 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Happy Birthday Am 💖</title>
+
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", "Noto Sans Myanmar", sans-serif;
+    }
+
     body {
       min-height: 100vh;
       display: flex;
-      align-items: center;
       justify-content: center;
-      font-family: "Segoe UI", sans-serif;
+      align-items: center;
       background: linear-gradient(135deg, #ffd6e7, #ffe9f2, #f8d9ff);
-      overflow: hidden;
+      overflow-x: hidden;
       color: #5a3552;
       padding: 20px;
+      position: relative;
     }
 
     .card {
-      width: min(92vw, 420px);
-      background: rgba(255,255,255,0.75);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.55);
+      width: min(92vw, 430px);
+      background: rgba(255,255,255,0.78);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.6);
       border-radius: 28px;
       padding: 28px 22px;
       text-align: center;
       box-shadow: 0 20px 50px rgba(150, 88, 126, 0.18);
       position: relative;
       z-index: 2;
-      animation: float 4s ease-in-out infinite;
     }
 
-    @keyframes float {
-      0%,100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
-
-    .small {
-      font-size: 14px;
-      opacity: 0.85;
+    .emoji {
+      font-size: 42px;
       margin-bottom: 10px;
-      letter-spacing: 0.4px;
+      animation: bounce 1.6s infinite;
     }
 
     h1 {
-      font-size: 34px;
-      margin-bottom: 8px;
-      color: #ff4f9a;
+      font-size: 30px;
+      margin-bottom: 10px;
+      color: #d94f8a;
     }
 
-    .name {
-      font-size: 24px;
+    .subtitle {
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 18px;
+      color: #744b66;
+    }
+
+    .btn {
+      border: none;
+      outline: none;
+      background: linear-gradient(135deg, #ff6fa7, #ff91bc);
+      color: white;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-size: 15px;
       font-weight: 700;
-      margin-bottom: 14px;
-      color: #7c4b66;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(255, 111, 167, 0.35);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .btn:active {
+      transform: scale(.97);
+    }
+
+    .surprise-box {
+      display: none;
+      margin-top: 22px;
+      animation: fadeUp .6s ease;
+    }
+
+    .photo {
+      width: 100%;
+      max-width: 260px;
+      border-radius: 22px;
+      margin: 0 auto 16px;
+      display: block;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+      border: 4px solid rgba(255,255,255,0.9);
     }
 
     .message {
-      font-size: 16px;
-      line-height: 1.8;
-      margin-top: 12px;
-      margin-bottom: 18px;
-    }
-
-    .highlight {
-      color: #ff4f9a;
-      font-weight: 700;
-    }
-
-    .tap-btn {
-      border: none;
-      outline: none;
-      cursor: pointer;
-      margin-top: 8px;
-      background: linear-gradient(135deg, #ff6ea8, #ff8ec2);
-      color: white;
-      padding: 14px 28px;
-      border-radius: 999px;
-      font-size: 18px;
-      font-weight: 700;
-      box-shadow: 0 12px 25px rgba(255, 105, 165, 0.28);
-      transition: transform .18s ease, box-shadow .18s ease;
-    }
-
-    .tap-btn:active {
-      transform: scale(0.96);
-    }
-
-    .surprise {
-      margin-top: 18px;
-      padding: 16px;
+      background: rgba(255,255,255,0.7);
       border-radius: 18px;
-      background: rgba(255, 255, 255, 0.75);
-      border: 1px dashed #ff8fbe;
-      display: none;
-      animation: pop .35s ease;
-    }
-
-    .surprise h2 {
-      font-size: 22px;
-      color: #ff4f9a;
-      margin-bottom: 10px;
-    }
-
-    .surprise p {
-      font-size: 15px;
+      padding: 16px;
       line-height: 1.8;
-    }
-
-    @keyframes pop {
-      from { transform: scale(0.92); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-
-    .footer {
-      margin-top: 18px;
-      font-size: 13px;
-      opacity: 0.75;
+      font-size: 15px;
+      color: #6a4660;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.5);
     }
 
     .heart {
       position: fixed;
-      bottom: -20px;
+      top: -40px;
+      font-size: 24px;
+      animation: fall linear forwards;
       z-index: 1;
       pointer-events: none;
-      animation: fly linear forwards;
-      opacity: 0.95;
-      filter: drop-shadow(0 4px 8px rgba(255, 120, 170, 0.18));
     }
 
-    @keyframes fly {
-      0% { transform: translateY(0) scale(0.9) rotate(0deg); opacity: 0; }
-      10% { opacity: 1; }
-      100% { transform: translateY(-115vh) scale(1.25) rotate(20deg); opacity: 0; }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0.2;
+      }
     }
   </style>
 </head>
 <body>
+
   <div class="card">
-    <div class="small">🎂 Happy Birthday 🎂</div>
-    <h1>မွေးနေ့မှာ ပျော်ရွှင်ပါစေ</h1>
-    <div class="name">မအဲမွန်ဖြိုး 💖</div>
+    <div class="emoji">🎂💖✨</div>
+    <h1>Happy Birthday Am 💖</h1>
 
-    <div class="message">
-      ဒီနေ့က <span class="highlight">အမ</span> အတွက် အရမ်းအရေးကြီးတဲ့နေ့လေးမို့  
-      ရယ်မောမှုတွေ၊ စိတ်ချမ်းသာမှုတွေ၊ လိုချင်တာတွေ အများကြီးရတဲ့နေ့တစ်နေ့ ဖြစ်ပါစေလို့ ဆုတောင်းပေးပါတယ် 🌷
-      <br><br>
-      အမရဲ့နေ့ရက်တွေက အမြဲလှပပြီး နွေးထွေးနေပါစေ။  
-      အမ ပြုံးလိုက်တိုင်း အနားကလူတွေတောင် ပျော်သွားရတဲ့အထိ အမရဲ့အပြုံးက တကယ်ချစ်ဖို့ကောင်းတယ် 🤍
+    <p class="subtitle">
+      ဒီနေ့က မင်းအတွက် အရမ်းထူးခြားတဲ့နေ့လေးပါ 💕<br>
+      Surprise လေးဖွင့်ကြည့်လိုက်နော် 🥹🎁
+    </p>
+
+    <button class="btn" onclick="showSurprise()">Open Surprise 🎀</button>
+
+    <div class="surprise-box" id="surpriseBox">
+      <!-- ဒီနေရာက ပုံ -->
+      <img src="myphoto.png" alt="Birthday Photo" class="photo">
+
+      <div class="message">
+        Happy Birthday ပါနော် 💖<br><br>
+        မင်းဘဝတစ်လျှောက် ပျော်ရွှင်မှုတွေအများကြီးနဲ့
+        အိပ်မက်တွေတစ်ခုပြီးတစ်ခု အကောင်အထည်ဖော်နိုင်ပါစေ ✨<br><br>
+        အမြဲပြုံးနိုင်ပြီး ချစ်ခြင်းမေတ္တာတွေအပြည့်နဲ့
+        လှပတဲ့နေ့ရက်တွေကိုပိုင်ဆိုင်နိုင်ပါစေ 🌷💕
+      </div>
     </div>
-
-    <button class="tap-btn" onclick="showSurprise()">အမ ကိုနှိပ်ပါ 💌</button>
-
-    <div class="surprise" id="surpriseBox">
-      <h2>Surprise for အမ ✨</h2>
-      <p>
-        မွေးနေ့ကစပြီး နောက်နေ့ရက်တွေထဲမှာလည်း  
-        အမ အမြဲပျော်ရွှင်နေရပါစေ 🌸<br><br>
-        တစ်ခုဝန်ခံရရင်...  
-        <span class="highlight">အမက တကယ်ချစ်ဖို့ကောင်းတယ်ဗျာ</span> 💗  
-        ဒီ link လေးကိုလည်း အမ ပြုံးသွားစေချင်လို့ သီးသန့်လုပ်ထားတာပါ 🙈
-      </p>
-    </div>
-
-    <div class="footer">Made with 💖 just for Am</div>
   </div>
 
   <script>
@@ -196,5 +190,6 @@
       }, 5000);
     }
   </script>
+
 </body>
 </html>
